@@ -1,22 +1,13 @@
 // Stops working when I try to import this file...
 const express = require('express');
 const router = express.Router();
-const { getGoals } = require('../controllers/goalController');
+const { getGoals, setGoal, updateGoal, deleteGoal } = require('../controllers/goalController');
 
-router.get('/', getGoals);
+// Can be shortened because they use the same route
+router.route('/').get(getGoals).post(setGoal);
 
-router.post('/', (req, res) => {
-  res.status(200).json({ msg: "Set Goal" });
-});
+router.put('/:id', updateGoal);
 
-router.put('/:id', (req, res) => {
-  const idy = req.params.id;
-  res.status(200).json({ msg: `Update Goal ${idy}` });
-});
-
-router.delete('/:id', (req, res) => {
-  const idy = req.params.id;
-  res.status(200).json({ msg: `Delete Goal ${idy}` });
-});
+router.delete('/:id', deleteGoal);
 
 module.exports = router;
