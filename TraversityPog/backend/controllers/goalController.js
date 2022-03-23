@@ -10,14 +10,13 @@ const getGoals = asyncHandle(async (req, res) => {
 //2 @Route   POST api/goals
 //2 @Acces   Private
 const setGoal = asyncHandle(async (req, res) => {
-
   // TODO: FIX THIS  LATER LOL (hard-coded prop[num])
   if (!req.body.number) {
     res.status(400);
     throw new Error(`Bro don't be like this plese give me data`);
   }
 
-  res.status(200).json({ msg: "Set Goal" });
+  res.status(200).json({ msg: `Set Goal` });
 });
 
 //3 @Desc    Update Goal

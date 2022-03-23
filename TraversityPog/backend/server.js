@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
+const colors = require('colors');
 const { errorHandler } = require('./middleware/errorMiddleware');
-const env = require('dotenv');
+const connectDB = require('./config/db');
+const env = require('dotenv').config();
 const port = process.env.PORT || 5000;//the variable or the hard-coded number
+
+connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
