@@ -39,9 +39,9 @@ const updateGoal = asyncHandle(async (req, res) => {
     throw new Error('There was no id to find the Goal T.T');
   }
 
-  const updatedGoal = await Goal.findByIdAndUpdate(idy, req.body, { new: true });
+  await goal.remove();
 
-  res.status(200).json(updatedGoal);
+  res.status(200).json({ id: idy });
 });
 
 //4 @Desc    Delete Goal
